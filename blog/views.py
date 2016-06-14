@@ -6,7 +6,7 @@ from django.utils import timezone
 from .models import Post, Comment
 
 def post_list(request):
-    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     paginator = Paginator(post_list, 5)
     page = request.GET.get('page')
     try:
